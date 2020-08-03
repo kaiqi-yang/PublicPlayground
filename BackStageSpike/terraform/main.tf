@@ -10,17 +10,33 @@ resource "aws_key_pair" "terraform_demo" {
 
 resource "aws_instance" "my_instance" {
   vpc_security_group_ids = ["${aws_security_group.ingress_all_test.id}"]
-  ami             = "ami-0ded330691a314693"
-  instance_type   = "t2.micro"
-  user_data       = <<EOF
-		#! /bin/bash
-        sudo apt-get update
-		sudo apt-get install -y apache2
-		sudo systemctl start apache2
-		sudo systemctl enable apache2
-		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
+  ami                    = "ami-0bc49f9283d686bab"
+  instance_type          = "t2.small"
+  user_data              = <<EOF
+        #! /bin/bash
+        ## download git
+        sudo yum update -y
+        sudo yum install git -y
+
+        ## set up node
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+        . ~/.nvm/nvm.sh
+        nvm install 12.0.0
+        nvm use 12.0.0
+
+        ## yarn
+        curl -o- -L https://yarnpkg.com/install.sh | bash
+        export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+        ## Clone repo
+        git clone https://github.com/spotify/backstage.git
+
+        ## start the app
+        cd backstage/
+        yarn install
+        yarn start
 	EOF
-    key_name = aws_key_pair.terraform_demo.key_name
+  key_name               = aws_key_pair.terraform_demo.key_name
   tags = {
     Name = "test backstage"
   }
@@ -43,6 +59,17 @@ resource "aws_security_group" "ingress_all_test" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_security_group_rule" "nginx_port_ingress" {
+  type      = "ingress"
+  from_port = 3000
+  to_port   = 3000
+  protocol  = "tcp"
+  cidr_blocks = [
+    "0.0.0.0/0"
+  ]
+  security_group_id = aws_security_group.ingress_all_test.id
 }
 
 resource "aws_security_group_rule" "nginx_http_ingress" {
@@ -68,10 +95,10 @@ resource "aws_security_group_rule" "nginx_https_ingress" {
 }
 
 output "public_ip" {
-    value = aws_instance.my_instance.public_ip
+  value = aws_instance.my_instance.public_ip
 }
 
 
 output "public_dns" {
-    value = aws_instance.my_instance.public_dns
+  value = aws_instance.my_instance.public_dns
 }
