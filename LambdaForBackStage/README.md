@@ -1,15 +1,20 @@
 following https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
 
-Step of build
+Step of deployment
 ```
 cd example
 
 zip ../example.zip main.js
 
+cd ..
+
+terraform init
+
+terraform apply
 ```
 
 
-After creating the func, can verify the output using:
+After creating the func and before the api gateway, can verify the output using:
 
 
 ```
