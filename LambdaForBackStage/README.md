@@ -5,6 +5,8 @@ Step of deployment
 cd example
 
 zip ../example.zip main.js
+zip zip ../example.zip -r node_modules
+zip ../example.zip package-lock.json
 
 cd ..
 
