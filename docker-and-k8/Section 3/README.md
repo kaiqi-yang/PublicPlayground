@@ -50,10 +50,20 @@
 
 34. Rebuilds with Cache
 7min
+- Docker build with cache
+  - ![](docker%20build%20change.png)
+  - the docker will use the previous images in cache
+  - And start building new container from the changing point
+  - ![](output%20of%20docker%20build%20with%20cache.png)
+
 
 35. Tagging an Image
 4min
+- `docker build -t kaiqiy/redis`
+  - ![](docker%20build%20with%20tagging.png)
+  - ![](docker%20build%20convention.png)
 
-36. Manual Image Generation with Docker
-Commit
+36. Manual Image Generation with Docker Commit
 5min
+- We can manually run a container and execute the commands, then use `docker commit` to generate a image from a container.
+- ![](manual%20image%20generation.png)
