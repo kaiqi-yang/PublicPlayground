@@ -21,14 +21,27 @@ Section 4: Making Real Projects with Docker
 42. Copying Build Files
 5min
 
+![](Copying%20build%20files%20.png)
+
 43. Reminder for Windows Home / Docker Toolbox Students
 1min
 
 44. Container Port Mapping
 7min
 
-45. Specifying a Working Directory
+- The container is able to access the internet by default.
+
+- Port mapping 
+  - ![](port%20mapping%20.png)
+
+
+45.  Specifying a Working Directory
 8min
+- Using `COPY ./ ./` will copy everything into the root folder, which is not a good practice because it will cause problems when it conflicts with folders in the root. 
+  - ![](Not%20using%20working%20directory.png)
+  - `WORKDIR /usr/app`
+    - Any following command will be executed relative to this path in the container.
+    - The older will be created if not exist
 
 46. Unnecessary Rebuilds
 4min
