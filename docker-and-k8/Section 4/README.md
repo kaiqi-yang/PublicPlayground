@@ -49,5 +49,8 @@ Section 4: Making Real Projects with Docker
 47. Minimizing Cache Busting and Rebuilds
 5min
 
+In the example, the following changes have been made. Which means that only changing `./package.json` will require a rebuild for step `npm install`.
+![](the%20changes%20to%20stop%20cache%20busting.png)
+
 48. Completed Code for Section 4
 1min
