@@ -29,6 +29,10 @@ Section 5: Docker Compose with Multiple Local Containers
 55. Docker Compose Commands
 5min
 
+- ![](Docker%20compose%20commands.png)
+-  Docker compose will handle some networking
+   -  docker compose networking
+
 56. Stopping Docker Compose Containers
 3min
 
@@ -43,3 +47,4 @@ Section 5: Docker Compose with Multiple Local Containers
 
 60. Completed Code for Section 5 Visits App
 1min
+![](docker%20compose%20networking.png)
