@@ -70,5 +70,9 @@ Section 5: Docker Compose with Multiple Local Containers
 1.  Container Status with Docker Compose
 2min
 
+- `docker-compose ps`
+  - needs to be run within the same dir with `docker-compose.yml`
+  - it will find the containers belongs to those files.
+
 60. Completed Code for Section 5 Visits App
 1min
