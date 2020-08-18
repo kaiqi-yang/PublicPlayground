@@ -13,8 +13,15 @@ Section 5: Docker Compose with Multiple Local Containers
 52. Introducing Docker Compose
 6min
 
+- docker compose
+  - ![](docker%20compose.png)
+
 53. Docker Compose Files
 6min
+- Docker container contains all the options we'd normally pass to docker-cli
+  - ![](Docker%20compose%20file%20.png)
+- basic structure
+  - ![](basic%20structure%20of%20docker%20compose.png)
 
 54. Networking with Docker Compose
 5min
