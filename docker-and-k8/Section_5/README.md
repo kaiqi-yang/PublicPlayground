@@ -67,7 +67,7 @@ Section 5: Docker Compose with Multiple Local Containers
   - `unless-stopped`
     - Always restart unless we (the developers) forcibly stop it
 
-1.  Container Status with Docker Compose
+59.  Container Status with Docker Compose
 2min
 
 - `docker-compose ps`
