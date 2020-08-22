@@ -157,6 +157,16 @@ https://stackoverflow.com/questions/60790696/react-scripts-start-exiting-in-dock
 84. Attaching to Web container
 1min
 
+- tried to use `docker attach <container id>`
+  - itt didn't work as expected
+  - ![](docker%20attach%20in%20diagram.png)
+- print out all the processes in the container
+  - ![](all%20processes%20in%20the%20test%20container.png)
+  - the npm processes in diagram
+    - ![](the%20npm%20processed%20in%20diagram.png)
+    - npm is running in a main process, and it will start up a secondary process to run the tests
+    - when we run `docker attach`, it will always attach to the stdin and stdout of the main process
+
 85. Shortcomings on Testing
 9min
 
@@ -166,8 +176,19 @@ https://stackoverflow.com/questions/60790696/react-scripts-start-exiting-in-dock
 87. Multi-Step Docker Builds
 7min
 
+- Proposed way of docker build 
+  - ![](Proposed%20way%20of%20docker%20build.png)
+  - We don't need to have all the dependencies. 
+    - The dependencies will be useless after `npm run build`, we don't need to carry all those content to the end.
+    - the `/build` folder will be populated with all the assets in it
+- Multiple phase of the build
+  - ![](mupti%20phase%20docker%20build.png)
+
 88. Implementing Multi-Step Builds
 7min
 
 89. Running Nginx
 2min
+- Start it up!
+  - ![](start%20it%20up%20with%20docker%20build.png)
+  - `docker run -p 8080:80 10568e94e573`
