@@ -62,13 +62,30 @@ npm run build
 72. Docker Volumes
 7min
 
+- Set up auto update with new changes with Docker volumes
+  - no longer copy the content
+  - it can be understood as a reference to local folder
+  - ![](Docker%20volumes.png)
+- Command to use after docker volumes
+  - `docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image id>` 
+  - ![](Command%20to%20use%20to%20map%20docker%20volumes.png)
+  
 
-
-73. Windows not Detecting Changes - Update
+73.  Windows not Detecting Changes - Update
 2min
+
 
 74. Bookmarking Volumes
 5min
+
+- The error: the app will not start up
+  - Because we don't have the `/node_module` folder in local, in docker when it tries to use the folder it will reference to nothing. 
+  - ![](missing%20node%20module%20in%20diagram.png)
+  - Solution
+    - add `-v /app/node_modules`
+    - This is a placeholder in workdir, it will not map to anything
+
+
 
 75. React App Exited With Code 0
 1min
