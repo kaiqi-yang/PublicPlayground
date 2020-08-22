@@ -125,11 +125,31 @@ https://stackoverflow.com/questions/60790696/react-scripts-start-exiting-in-dock
 80. Executing Tests
 4min
 
-81. Live Updating Tests
+- To run the test
+  - Just append the command at the end of docker run to overwrite
+    - `docker run <container id> npm run test`
+    - add `-it` to interact with the `stdin`
+  - Downside:
+    - will always need to remember the container id
+
+
+81.  Live Updating Tests
 5min
+- We can choose to attach to the existing container
+  - `docker exec -it f6174ff88ff4 npm run test`
+  - so that the test will be auto updating
+    - ![](auto%20updating%20test.png)
 
 82. Docker Compose for Running Tests
 6min
+
+- Docker compose for running tasks: 
+  - Added a docker compose service for tests
+    - so that a container will be started up to run tests
+    - it will also support live updating for tests because of the volumes
+    - ![](Added%20a%20docker%20compose%20service%20for%20tests.png)
+  - Downside:
+    - cannot interact with the container
 
 83. Tests Not Re-running on Windows
 1min
