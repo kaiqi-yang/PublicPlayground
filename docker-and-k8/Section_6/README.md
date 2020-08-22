@@ -13,6 +13,8 @@
 64. Project Generation
 3min
 
+npx create-react-app frontend
+
 65. Create React App Generation
 1min
 
@@ -22,8 +24,19 @@
 67. Necessary Commands
 5min
 
+```
+npm run start
+
+npm run test
+
+npm run build
+```
+
 68. Creating the Dev Dockerfile
 4min
+
+- The plan
+  - ![](The%20plan%20for%20step%2068.png)
 
 69. Duplicating Dependencies
 1min
