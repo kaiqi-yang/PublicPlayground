@@ -37,18 +37,32 @@ npm run build
 
 - The plan
   - ![](The%20plan%20for%20step%2068.png)
+- Created the `Dockerfile.dev`
+  - `docker build -f Dockerfile.dev .`
+
+
 
 69. Duplicating Dependencies
 1min
+
+- The content to copy is very large because of the `/node_modules` folder that the `create-react-app` created. This is give us duplicated dependencies and it will slow down the docker build. 
+  - We can remove the `/node_modules` folder to speed up the docker build.
+  - ![](docker%20daemon.png)
+  - Solution
+    - ![](Remove%20the%20node%20modules%20folder.png)
 
 70. React App Exits Immediately with Docker Run Command
 1min
 
 71. Starting the Container
 3min
+- command
+    - ` docker run -it -p 3000:3000 CONTAINER_ID `
 
 72. Docker Volumes
 7min
+
+
 
 73. Windows not Detecting Changes - Update
 2min
