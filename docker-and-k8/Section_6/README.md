@@ -90,8 +90,28 @@ npm run build
 75. React App Exited With Code 0
 1min
 
-76. Shorthand with Docker Compose
+4-1-2020
+
+Recently, a bug was introduced with the latest Create React App version that is causing the React app to exit when starting with Docker Compose.
+
+To Resolve this:
+
+Add stdin_open property to your docker-compose.yml file
+
+```
+  web:
+    stdin_open: true
+```
+
+Make sure you rebuild your containers after making this change with  docker-compose down && docker-compose up --build
+
+https://github.com/facebook/create-react-app/issues/8688
+
+https://stackoverflow.com/questions/60790696/react-scripts-start-exiting-in-docker-foreground-cmd
+
+76.  Shorthand with Docker Compose
 4min
+
 
 77. Overriding Dockerfile Selection
 2min
