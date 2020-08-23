@@ -25,15 +25,19 @@ Section 9: "Dockerizing" Multiple Services
 
 130. Environment Variables with Docker Compose
 10min
+env vars in docker compose
+    ![](env%20vars%20in%20docker%20compose.png)
 
 131. The Worker and Client Services
 4min
 
 132. Nginx Path Routing
 10min
+- ![](Nginx%20Path%20routing.png)
 
 133. Routing with Nginx
 11min
+
 
 134. Building a Custom Nginx Image
 6min
