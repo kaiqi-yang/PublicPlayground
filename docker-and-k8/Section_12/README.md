@@ -145,6 +145,16 @@ image: stephengrider/multi-client
 
 189. Running Containers in Pods
 9min
+- `Node`
+  - In the local env, it's the VM that created by `minicube`
+  - It's been used to run one of more **objects**
+- `Pod`
+  - Which is one of many kinds of `objects`
+  - Is a grouping of containers with a very common purpose
+  - Pod is the smallest thing that kubernetes control, in other words, k8s is not responsible for creating containers
+  - Pod should be a group of **tightly coupled containers**
+  - ![](Potential%20usage%20of%20Pod.png)
+- ![](Node%20Pod%20and%20container.png)
 
 190. Service Config Files in Depth
 14min

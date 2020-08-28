@@ -10,4 +10,5 @@ spec:
           image: stephengrider/multi-client
           ports:
             - containerPort: 3000
+            # exposing port 3000 to the outside world
             
