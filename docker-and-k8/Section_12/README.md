@@ -159,11 +159,93 @@ image: stephengrider/multi-client
 190. Service Config Files in Depth
 14min
 
+- `Services`
+  - Another type of `objects`
+  - Sets up networking in a K8S cluster
+  - Services and subtypes 
+    - ![](Services%20and%20subtypes.png)
+- Local architecture in diagram
+  - ![](Local%20architecture%20in%20diagram.png)
+- subtype `NodePort`
+  - Not preferred in prod env
+    - because of the port mapping
+  - Service NodePort and pod
+    - ![](Service%20NodePort%20and%20pod.png)
+    - The other specs for NodePort
+      - `port`
+        - Is for other pods that need multi-client pod
+      - `targetPort`
+        - the pod inside of the multi-client pod that we want to open the traffic to
+      - `nodePort`
+        -  the port exposed to the outside ie, browser
+     -  port vs targetPort vs nodePort
+        -  ![](port%20vs%20targetPort%20vs%20nodePort.png)
+
 191. Connecting to Running Containers
 10min
 
+- Feed a config file to Kubectl
+  - `kubectl apply -f <filename>`
+    - ![](kubectl%20apply.png)
+  - kubectl apply in action
+    - kubectl apply in action
+    ```
+    client-node-port.yaml client-pod.yaml
+    ❯ kubectl apply -f client-pod.yaml
+    pod/client-pod created
+    ❯ kubectl apply -f client-node-port.yaml
+    service/client-node-port created
+    ```
+- Print the status of all running pods
+  - `kubectl get pods`
+    ```
+    ❯ kubectl get pods
+    NAME         READY   STATUS    RESTARTS   AGE
+    client-pod   1/1     Running   0          2m14s
+    ``` 
+  - `kubectl get services`
+    ```
+    ❯ kubectl get services
+    NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+    client-node-port   NodePort    10.103.198.91   <none>        3050:31515/TCP   2m54s
+    kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          23h
+    ```
+- To access it
+  - `minikube service list`
+    ```
+    ❯ minikube service list
+    |-------------|------------------|--------------|-----|
+    |  NAMESPACE  |       NAME       | TARGET PORT  | URL |
+    |-------------|------------------|--------------|-----|
+    | default     | client-node-port |         3050 |     |
+    | default     | kubernetes       | No node port |
+    | kube-system | kube-dns         | No node port |
+    |-------------|------------------|--------------|-----|
+    ```
+  - `minikube service client-node-port`
+    ```
+
+    ❯ minikube service client-node-port
+    |-----------|------------------|-------------|-------------------------|
+    | NAMESPACE |       NAME       | TARGET PORT |           URL           |
+    |-----------|------------------|-------------|-------------------------|
+    | default   | client-node-port |        3050 | http://172.17.0.3:31515 |
+    |-----------|------------------|-------------|-------------------------|
+    🏃  Starting tunnel for service client-node-port.
+    |-----------|------------------|-------------|------------------------|
+    | NAMESPACE |       NAME       | TARGET PORT |          URL           |
+    |-----------|------------------|-------------|------------------------|
+    | default   | client-node-port |             | http://127.0.0.1:55492 |
+    |-----------|------------------|-------------|------------------------|
+    🎉  Opening service default/client-node-port in default browser...
+    ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+    ```
+  - the your app will be opened in browser
+
 192. The Entire Deployment Flow
 13min
+
+
 
 193. Imperative vs Declarative Deployments
 14min

@@ -3,10 +3,11 @@ kind: Service
 metadata:
     name: client-node-port
 spec:
-    type: NodePort
+    type: NodePort # a subtype for kind "Service"
     ports:
-        - ports: 3050
+        - port: 3050
           targetPort: 3000
           nodePort: 31515
     selector:
         component: web
+        # this selector is the reference to client-pod
