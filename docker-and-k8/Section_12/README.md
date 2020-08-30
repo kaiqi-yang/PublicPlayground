@@ -242,6 +242,8 @@ image: stephengrider/multi-client
     ```
   - the your app will be opened in browser
 
+  
+
 192. The Entire Deployment Flow
 13min
 
@@ -249,3 +251,8 @@ image: stephengrider/multi-client
 
 193. Imperative vs Declarative Deployments
 14min
+
+- main takeaways
+  - ![](main%20takeaways.png)
+- We should use imperative for any prod-grade workload
+  - ![](imperative%20vs%20declarative%20approach.png)
