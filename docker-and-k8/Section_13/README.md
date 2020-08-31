@@ -7,14 +7,49 @@
 195. Declarative Updates in Action
 7min
 
+```
+❯ kubectl apply -f client-pod.yaml
+pod/client-pod configured
+```
+- `kubectl describe <object type> <object name>`
+
+
+
 196. Limitations in Config Updates
 3min
 
+- tried to update containerPort
+  - Error went out and says that you can only change few properties
+  - ![](Limitations%20in%20config%20updates.png)
+  - ![](Limitations%20of%20Pods%20config.png)
 197. Quick Note to Prevent an Error
 1min
 
 198. Running Containers with Deployments
 6min
+
+- `Deployments`
+  - Another kind of `objects`
+    - `Pods`
+      - Runs one or more closely related containers
+    - `Services`
+      - Sets up networking in a Kubernetes Cluster
+    - `Deployment`
+      - Maintains a set of identical pods, ensuring that they have the correct config and that the right number exists. 
+
+- Pods vs Deployments
+  - `Pods`
+    - Runs a single set of containers
+    - Good for one-off dev purposes
+    - Rarely used directly in production
+  - `Deployments`
+    - Runs a set of identical pods (one or more)
+    - Monitors the state of each pod, updating as necessary
+    - Good for dev
+    - Good for production
+    - Pod Template
+      - ![](Pod%20Template.png)
+  
 
 199. Deployment Configuration Files
 3min
