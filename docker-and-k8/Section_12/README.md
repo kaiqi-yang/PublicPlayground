@@ -60,6 +60,7 @@ https://minikube.sigs.k8s.io/docs/drivers/docker/#known-issues
   - VirtualBox
   - brew install minikube
   - `minikube start`
+    - `minikube start --driver=virtualbox`
 
 181. Minikube Setup on Windows Pro
 1min
@@ -189,6 +190,8 @@ image: stephengrider/multi-client
     - ![](kubectl%20apply.png)
   - kubectl apply in action
     - kubectl apply in action
+    - `kubectl apply -f client-pod.yaml`
+    - `kubectl apply -f client-node-port.yaml`
     ```
     client-node-port.yaml client-pod.yaml
     ❯ kubectl apply -f client-pod.yaml

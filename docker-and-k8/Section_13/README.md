@@ -7,10 +7,12 @@
 195. Declarative Updates in Action
 7min
 
-```
-❯ kubectl apply -f client-pod.yaml
-pod/client-pod configured
-```
+- `kubectl apply -f client-pod.yaml`
+
+  ```
+  ❯ kubectl apply -f client-pod.yaml
+  pod/client-pod configured
+  ```
 - `kubectl describe <object type> <object name>`
 
 
@@ -59,6 +61,12 @@ pod/client-pod configured
 
 201. Applying a Deployment
 6min
+
+- To remove an object
+  - `kubectl delete -f <config file>`
+
+- To check the status
+  - `kubectl get deployments`
 
 202. Why Use Services?
 5min

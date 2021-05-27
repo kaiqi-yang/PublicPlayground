@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
-metatdata:
-    name: client-Deployment
+metadata:
+    name: client-deployment
 spec:
     replicas: 1
-    selector:
+    selector: # this is for getting a handle of the created pods
         matchLabels:
             component: web
     template: 
@@ -14,6 +14,6 @@ spec:
         spec:
             containers:
                 - name: client
-                  image: stephengrider/multi-worker
+                  image: stephengrider/multi-client
                   ports:
                     - containerPort: 3000

@@ -37,7 +37,7 @@ env vars in docker compose
 
 133. Routing with Nginx
 11min
-
+- ![](Routing%20with%20Nginx.png)
 
 134. Building a Custom Nginx Image
 6min
