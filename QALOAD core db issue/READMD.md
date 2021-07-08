@@ -9,6 +9,18 @@
     - ![](performance%20of%20API%20varies%20between%20two%20runs%20of%20same%20traffic.png)
     - APIs with more than 15s latency, causing the build to fail.
 
+
+
+## Monitoring
+
+- Performance insights
+  - Find the writer and select `innodb_buffer_pool_read_requests`, `innodb_buffer_pool_hits`, `writeIOsPS`, `auroraStorageBytesTx`, `auroraStorageBytesRx`.
+  - [link](https://ap-southeast-2.console.aws.amazon.com/rds/home?region=ap-southeast-2#performance-insights-v20206:/resourceId/db-POQNY3APPIPECFQPKK6ODZVFGE/resourceName/qaload-paylater-db-instance-20210611090155580500000003/startTime/1625695926147/endTime/1625745900000)
+- Cloudwatch dashboard
+  - [link](https://ap-southeast-2.console.aws.amazon.com/cloudwatch/home?region=ap-southeast-2#dashboards:name=qaload-db-perf-investigation;start=PT12H)
+- New Relic dashboard
+  - [link](https://one.newrelic.com/-/0rVRVNJ8JRa)
+
 ## Indicators
 
 ### `fts_cache_rw_lock` 
@@ -55,6 +67,13 @@
 
 
 
+## Patterns
+- It could take more than 5 hours
+
+- The work load seems to be able to automatically start.
+  - ![](The%20workload%20is%20able%20to%20start%20after%20a%20period%20of%20time.png)
+
+
 ## Theories
 
 ### Store procedures or other sql executing
@@ -84,7 +103,6 @@
   ```
   mysql> SET GLOBAL innodb_ft_aux_table = 'paylater/order_detail';
   ERROR 1227 (42000): Access denied; you need (at least one of) the SUPER privilege(s) for this operation
-
   ```
 
 
